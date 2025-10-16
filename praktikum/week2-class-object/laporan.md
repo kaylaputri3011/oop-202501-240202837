@@ -123,7 +123,7 @@ public class CreditBy {
 
 ## Hasil Eksekusi
 (Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots (117).png)
+![Screenshot hasil](image-1.png)
 ) 
 ---
 
@@ -162,3 +162,6 @@ Dalam pemrograman berorientasi objek, Kelas (Class) adalah cetak biru atau templ
     * Penghitungan Otomatis: Menambahkan logika diskon, pajak, atau mark-up langsung di dalam class.
     * Manajemen Stok: Mengimplementasikan metode untuk mengurangi stok saat terjadi penjualan dan memicu peringatan jika stok menipis.
     * Polimorfisme: Memungkinkan pembuatan sub-kelas untuk jenis produk khusus (misalnya, DigitalProduct, PhysicalProduct) yang memiliki perilaku berbeda, sehingga mendukung sistem POS yang lebih fleksibel dan skalabel.
+
+
+[def]: screenshot(117).png
