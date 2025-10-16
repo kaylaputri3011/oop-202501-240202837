@@ -104,7 +104,7 @@ public class HelloFunctional {
 
 ## Hasil Eksekusi
 (Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](screenshots(95).png) (screenshots(96).png) (screenshots(97).png)
+![Screenshot hasil]![alt text](<Screenshot (95).png>) ![alt text](<Screenshot (96).png>) ![alt text](<Screenshot (97).png>)
 )
 ---
 
