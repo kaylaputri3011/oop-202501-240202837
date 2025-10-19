@@ -107,7 +107,7 @@ public class MainProduk {
         p3.kurangiStok(2005); // Memicu pesan error
         System.out.println("sisa stok " + p3.getNama() + " setelah berkurang 2005 produk: " + p3.getStok());
         // Tampilkan identitas mahasiswa
-        CreditBy.print("kayla putri arsonisr", "240202837");
+        CreditBy.print("240202837", "Kayla Putri Arsonisr");
     }
     
 }
@@ -123,7 +123,7 @@ public class CreditBy {
 
 ## Hasil Eksekusi
 (Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil](image-1.png)
+![Screenshot hasil] ![alt text](<Screenshot week2.png>)
 ) 
 ---
 
