@@ -1,5 +1,5 @@
 # Laporan Praktikum Minggu 2
-Topik: Praktik Class dan Object
+Topik: Praktik Class dan Object((Enkapsulasi))
 
 ## Identitas
 - Nama  : kayla putri arsonisr
