@@ -1,5 +1,5 @@
 # Laporan Praktikum Minggu 3
-Topik: Inheritance (Kategori Produk)
+Topik: Pewarisan (Inheritance), Superclass, dan Subclass
 
 ## Identitas
 - Nama  : kayla putri arsonisr
