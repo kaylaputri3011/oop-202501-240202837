@@ -81,14 +81,17 @@ public class Produk {
             System.out.println("Stok tidak mencukupi!");
         }
     }
-    
+
     public void tampilkanData() {
         System.out.println("  Kode Produk: " + kode);
         System.out.println("  Nama Produk: " + nama);
         System.out.println("  Harga (Rp): " + harga);
         System.out.println("  Stok Tersedia: " + stok);
     }
+
+    
 }
+
 
 2. Benih.java
 package main.java.com.upb.agripos.model;
@@ -117,6 +120,7 @@ public class Benih extends Produk {
     }
     
 }
+
 
 3. Pupuk.java
 package main.java.com.upb.agripos.model;
@@ -154,6 +158,7 @@ public class Pupuk extends Produk {
 
 }
 
+
 4. AlatPertanian.java
 package main.java.com.upb.agripos.model;
 
@@ -187,13 +192,9 @@ public class AlatPertanian extends Produk {
         }
         System.out.println("  Keterangan Tambahan: " + ket);
     }
-
-    public String getJenis() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getJenis'");
-    }
     
 }
+
 
 5. MainInheritance
 package main.java.com.upb.agripos;
@@ -262,7 +263,7 @@ public class CreditBy {
 
 ## Hasil Eksekusi
 (Sertakan screenshot hasil eksekusi program.  
-![Screenshot hasil] ![alt text] ![alt text] ![alt text](<Screenshot (128).png>) ![alt text](<Screenshot (129).png>)
+![Screenshot hasil] ![alt text] ![alt text] ![alt text](<Screenshot (128).png>) ![alt text](<Screenshot (129).png>) atau ![alt text](<Screenshot (140).png>) ![alt text](<Screenshot (141).png>)
 )
 ---
 
