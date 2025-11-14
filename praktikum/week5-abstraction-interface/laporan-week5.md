@@ -311,10 +311,12 @@ Praktikum ini berhasil membuktikan bahwa Abstract Class (Pembayaran) sangat efek
 Jawaban:
 a. Abstract Class (AC): Digunakan untuk membangun kerangka kerja dengan fokus pada hubungan is-a yang kuat (inheritance). AC dapat memiliki field (state), method konkret (berisi implementasi), constructor, dan abstract method. Tujuannya adalah menyediakan dasar yang harus diwarisi dan diselesaikan.
 b. Interface (I): Digunakan untuk mendefinisikan kontrak perilaku dengan fokus pada hubungan can-do. Interface secara implisit memiliki abstract method saja (sejak Java 8 ke atas, dapat memiliki default method). Interface tidak dapat memiliki state dan digunakan untuk mencapai multiple inheritance pada perilaku.
+
 2. Mengapa multiple inheritance lebih aman dilakukan dengan interface pada Java?
 Jawaban:
 a. Multiple inheritance pada kelas di Java dilarang karena dapat menyebabkan Diamond Problem (masalah ambiguitas pewarisan state dan method konkret).
 b. Interface aman karena hanya mendefinisikan method tanpa state (data) atau implementasi konkret. Oleh karena itu, ketika sebuah kelas mengimplementasikan dua interface yang memiliki method dengan tanda tangan yang sama, tidak ada ambiguitas; kelas tersebut hanya perlu menyediakan satu implementasi untuk method tersebut.
+
 3. Pada contoh Agri-POS, bagian mana yang paling tepat menjadi abstract class dan mana yang menjadi interface? Jelaskan alasannya.
 Jawaban:
 a. Abstract Class: Pembayaran. Alasannya, semua metode pembayaran pasti memiliki properti yang sama (invoiceNo, total) dan memerlukan dua proses inti yang berbeda-beda (biaya() dan prosesPembayaran()). Ini adalah hubungan is-a: Cash adalah Pembayaran, EWallet adalah Pembayaran.
