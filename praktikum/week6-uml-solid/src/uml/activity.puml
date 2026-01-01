@@ -1,0 +1,39 @@
+@startuml
+!theme plain
+|Kasir|
+start
+:Login & Masuk Menu;
+:Input/Scan Produk;
+
+|Sistem|
+if (Stok Ada?) then (Tidak)
+    :Tampilkan Error;
+    stop
+else (Ya)
+    :Hitung Subtotal;
+endif
+
+|Kasir|
+:Pilih Metode Bayar;
+
+|Sistem|
+:Proses Pembayaran;
+
+|Payment Gateway|
+if (Saldo Cukup?) then (Tidak)
+    :Gagal;
+    |Sistem|
+    :Info Gagal;
+    stop
+else (Ya)
+    :Sukses;
+endif
+
+|Sistem|
+:Kurangi Stok & Simpan;
+:Cetak Struk;
+
+|Kasir|
+:Serahkan Struk;
+stop
+@enduml

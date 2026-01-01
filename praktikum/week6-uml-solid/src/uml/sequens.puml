@@ -1,0 +1,44 @@
+@startuml
+!theme plain
+autonumber
+actor Kasir
+boundary "CheckoutUI" as UI
+control "TransactionService" as Svc
+entity "DiscountStrategy" as Disc
+entity "PaymentMethod" as Pay
+entity "ProductRepository" as Repo
+
+Kasir -> UI : klikBayar(total, tipeBayar)
+activate UI
+
+UI -> Svc : processPayment(total, tipeBayar)
+activate Svc
+
+group Logic Diskon
+    Svc -> Disc : calculateDiscount(total)
+    activate Disc
+    Disc --> Svc : return potongan
+    deactivate Disc
+    Svc -> Svc : hitungTotalAkhir()
+end
+
+Svc -> Pay : pay(finalTotal)
+activate Pay
+
+alt Pembayaran Sukses
+    Pay --> Svc : true
+    Svc -> Repo : updateStock(items)
+    activate Repo
+    Repo --> Svc : success
+    deactivate Repo
+    Svc --> UI : "Transaksi Berhasil"
+    UI -> UI : printStruk()
+else Gagal
+    Pay --> Svc : false
+    deactivate Pay
+    Svc --> UI : "Error Message"
+end
+
+deactivate Svc
+deactivate UI
+@enduml

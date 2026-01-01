@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Admin" as admin
+actor "Kasir" as kasir
+
+rectangle "Agri-POS System" {
+    usecase "Login" as UC1
+    usecase "Kelola Produk" as UC2
+    usecase "Lihat Laporan" as UC3
+    usecase "Kelola Diskon" as UC4
+    usecase "Proses Transaksi" as UC5
+    usecase "Identifikasi Member" as UC6
+    usecase "Cetak Struk" as UC7
+}
+
+' Relasi Admin
+admin --> UC1
+admin --> UC2
+admin --> UC3
+admin --> UC4
+
+' Relasi Kasir
+kasir --> UC1
+kasir --> UC5
+
+' Include & Extend
+UC5 ..> UC7 : <<include>>
+UC5 <.. UC6 : <<extend>>
+@enduml

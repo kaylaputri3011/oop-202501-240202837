@@ -1,0 +1,101 @@
+@startuml
+!theme plain
+' Mematikan icon shape agar visibility muncul sebagai simbol (+, -, #)
+skinparam classAttributeIconSize 0
+' Mengatur arah layout dari Atas ke Bawah
+top to bottom direction
+
+' --- 1. PAKET MODEL (Data Entities) ---
+package "Model" {
+    class Product {
+        -code: String
+        -name: String
+        -price: double
+        -stock: int
+        +getPrice(): double
+        +reduceStock(qty: int): void
+    }
+
+    class Transaction {
+        -id: String
+        -date: Date
+        -totalAmount: double
+        +calculateTotal(): double
+    }
+
+    class Customer {
+        -memberId: String
+        -name: String
+        -points: int
+        +addPoints(p: int): void
+    }
+}
+
+' --- 2. PAKET REPOSITORY (Data Access) ---
+package "Repository" {
+    interface ProductRepository <<interface>> {
+        +findByCode(code: String): Product
+        +save(p: Product): void
+    }
+
+    class SqlProductRepository {
+        +findByCode(code: String): Product
+        +save(p: Product): void
+    }
+}
+
+' --- 3. PAKET PAYMENT (Logic Pembayaran) ---
+package "Payment" {
+    interface PaymentMethod <<interface>> {
+        +pay(amount: double): boolean
+    }
+
+    class CashPayment {
+        +pay(amount: double): boolean
+    }
+
+    class EWalletPayment {
+        -providerName: String
+        +pay(amount: double): boolean
+    }
+}
+
+' --- 4. PAKET DISCOUNT (Logic Diskon) ---
+package "Discount" {
+    interface DiscountStrategy <<interface>> {
+        +calculateDiscount(total: double): double
+    }
+
+    class MemberDiscount {
+        +calculateDiscount(total: double): double
+    }
+}
+
+' --- 5. PAKET SERVICE (Bisnis Logic) ---
+package "Service" {
+    class TransactionService {
+        +processCheckout(t: Transaction): void
+    }
+}
+
+' --- RELASI ANTAR CLASS ---
+
+' 1. Implementasi (Realization) - Garis putus segitiga
+ProductRepository <|.. SqlProductRepository
+PaymentMethod <|.. CashPayment
+PaymentMethod <|.. EWalletPayment
+DiscountStrategy <|.. MemberDiscount
+
+' 2. Ketergantungan (Dependency/Uses) - Garis putus panah
+TransactionService ..> PaymentMethod : uses
+TransactionService ..> DiscountStrategy : uses
+TransactionService --> ProductRepository : uses
+TransactionService ..> Transaction : process
+
+' 3. Komposisi/Agregasi - Garis solid diamond
+' Multiplicity: 1 Transaksi punya Banyak Produk
+Transaction "1" *-- "*" Product : contains
+
+' 4. Relasi Logis Lainnya
+DiscountStrategy ..> Customer : checks
+@enduml
