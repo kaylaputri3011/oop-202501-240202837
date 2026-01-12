@@ -1,4 +1,5 @@
 package main.java.com.upb.agripos.model;
+import java.util.Objects;
 // Produk.java
 
 public class Produk {
@@ -41,5 +42,18 @@ public class Produk {
         } else {
             System.out.println("Stok tidak mencukupi!");
         }
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produk produk = (Produk) o;
+        return Objects.equals(kode, produk.kode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kode);
     }
 }

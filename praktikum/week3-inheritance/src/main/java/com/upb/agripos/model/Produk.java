@@ -1,6 +1,8 @@
 package main.java.com.upb.agripos.model;
 // Produk.java
 
+import java.util.Objects;
+
 public class Produk {
     private String kode;
     private String nama;
@@ -50,5 +52,4 @@ public class Produk {
         System.out.println("  Stok Tersedia: " + stok);
     }
 
-    
 }

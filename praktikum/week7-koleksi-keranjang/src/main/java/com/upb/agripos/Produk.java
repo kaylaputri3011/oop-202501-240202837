@@ -1,4 +1,4 @@
-package main.java.com.upb.agripos.model;
+package main.java.com.upb.agripos;
 import java.util.Objects;
 // Produk.java
 
@@ -6,7 +6,7 @@ public class Produk {
     private String kode;
     private String nama;
     private double harga;
-    protected int stok;
+    private int stok;
 
     public Produk(String kode, String nama, double harga, int stok) {
         this.kode = kode;
@@ -30,29 +30,17 @@ public class Produk {
     public void tambahStok(int jumlah) {
         if (jumlah > 0) {
             this.stok += jumlah;
-            System.out.println("Stok " + nama + " bertambah " + jumlah + " (int). Stok baru: " + this.stok);
         } else {
-            // Mengubah pesan agar lebih sesuai konteks
-            System.out.println("Gagal: Jumlah stok yang ditambahkan harus lebih dari nol!");
-        }
-    }
-
-    public void tambahStok(double jumlah) {
-        int jumlahInt = (int) Math.round(jumlah);
-        if (jumlahInt > 0) {
-            this.stok += jumlahInt;
-            System.out.println("Stok " + nama + " bertambah " + jumlah + " (double/dibulatkan jadi " + jumlahInt + "). Stok baru: " + this.stok);
-        } else {
-            System.out.println("Gagal: Jumlah stok yang ditambahkan (setelah dibulatkan) harus lebih dari nol!");
+            System.out.println("Jumlah stok yang ditambahkan tidak boleh ditambahkan!");
+            
         }
     }
 
     public void kurangiStok(int jumlah) {
         if (this.stok >= jumlah) {
             this.stok -= jumlah;
-            System.out.println("Stok " + nama + " berkurang " + jumlah + ". Stok baru: " + this.stok);
         } else {
-            System.out.println("Stok tidak mencukupi untuk " + nama + "! Tersedia: " + this.stok);
+            System.out.println("Stok tidak mencukupi!");
         }
     }
 
@@ -63,12 +51,16 @@ public class Produk {
         System.out.println("  Stok Tersedia: " + stok);
     }
 
-    public void getInfo() {
-        System.out.println("--- Detail Produk Umum ---");
-        System.out.println(" Kode: " + kode);
-        System.out.println(" Nama: " + nama);
-        System.out.println(" Harga (Rp): " + harga);
-        System.out.println(" Stok Tersedia: " + stok);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produk produk = (Produk) o;
+        return Objects.equals(kode, produk.kode);
     }
-    
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kode);
+    }
 }
