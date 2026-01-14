@@ -36,14 +36,17 @@ public class ShoppingCartMap {
     }
 
     public void printCart() {
-        System.out.println("Isi Keranjang (Map):");
+        System.out.println("Isi Keranjang:");
         for (Map.Entry<Produk, Integer> e : items.entrySet()) {
             Produk p = e.getKey();
             int qty = e.getValue();
+            // Hitung subtotal per baris
+            double subtotal = p.getHarga() * qty;
             
-            
-            System.out.println("- " + p.getKode() + " " + p.getNama() + " x" + qty);
+            // Tampilkan: Nama xQty = Rp Subtotal
+            System.out.println("- " + p.getNama() + " x" + qty + " = Rp " + subtotal);
         }
+        
         System.out.println("Total: " + getTotal());
     }
 }

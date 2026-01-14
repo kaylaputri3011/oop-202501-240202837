@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import main.java.com.upb.agripos.model.Produk;
 
-public class ProdukDAOImpl implements ProdukDAO {
+public class SqlProductRepository implements ProductRepository {
 
     private final Connection connection;
 
-    public ProdukDAOImpl(Connection connection) {
+    public SqlProductRepository(Connection connection) {
         this.connection = connection;
     }
 
     @Override
-    public void insert(Produk p) throws Exception {
+    public void save(Produk p) throws Exception {
         // Nama kolom di database TETAP bahasa Inggris (sesuai CREATE TABLE)
         String sql = "INSERT INTO products(code, name, price, stock) VALUES (?, ?, ?, ?)";
         
@@ -29,10 +29,10 @@ public class ProdukDAOImpl implements ProdukDAO {
     }
 
     @Override
-    public Produk findByKode(String kode) throws Exception {
+    public Produk findByCode(String code) throws Exception {
         String sql = "SELECT * FROM products WHERE code = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, kode);
+            ps.setString(1, code);
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     // Mapping: Database (Inggris) -> Java (Indo)

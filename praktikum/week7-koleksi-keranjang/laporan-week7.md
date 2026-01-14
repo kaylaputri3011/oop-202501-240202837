@@ -100,7 +100,7 @@ public class MainCart {
 ---
 
 ## Hasil Eksekusi
-![alt text](image-1.png)
+![alt text](image-1.png) ![alt text](image.png)
 
 ---
 

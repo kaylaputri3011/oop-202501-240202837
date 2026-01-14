@@ -2,8 +2,8 @@ package main.java.com.upb.agripos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import main.java.com.upb.agripos.dao.ProdukDAO;
-import main.java.com.upb.agripos.dao.ProdukDAOImpl;
+import main.java.com.upb.agripos.dao.ProductRepository;
+import main.java.com.upb.agripos.dao.SqlProductRepository;
 import main.java.com.upb.agripos.model.Produk;
 
 public class MainDAOTest {
@@ -13,34 +13,36 @@ public class MainDAOTest {
                 "postgres", 
                 "111123")) {
 
-            ProdukDAO dao = new ProdukDAOImpl(conn);
+            ProductRepository dao = new SqlProductRepository(conn); 
             
             System.out.println("=== 1. Insert Data ===");
             Produk p1 = new Produk("P01", "Pupuk Organik", 25000, 10);
-            dao.insert(p1);
-            p1.tampilkanData(); // Menggunakan method baru di Model
+            
+            dao.save(p1); 
+            p1.tampilkanData(); 
 
             System.out.println("\n=== 2. Update Data (Tambah Stok) ===");
-            Produk found = dao.findByKode("P01");
+            
+            Produk found = dao.findByCode("P01"); 
+            
             if (found != null) {
-                // Menggunakan logika bisnis di Model
+             
                 found.tambahStok(5); 
                 found.setNama("Pupuk Organik Super");
                 
-                // Simpan perubahan ke database
-                dao.update(found);
-                System.out.println("Data berhasil diupdate ke Database.");
+                System.out.println("Data diupdate (Simulasi).");
             }
 
             System.out.println("\n=== 3. Cek Hasil Update ===");
-            Produk updated = dao.findByKode("P01");
+            
+            Produk updated = dao.findByCode("P01"); 
+            
             if (updated != null) {
                 updated.tampilkanData();
             }
 
-            // Uncomment baris di bawah ini jika ingin menghapus data setelah test
-            // dao.delete("P01"); 
 
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
