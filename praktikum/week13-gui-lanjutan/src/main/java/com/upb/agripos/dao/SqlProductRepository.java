@@ -59,4 +59,10 @@ public class SqlProductRepository implements ProductRepository {
         // ... (Implementasi findByCode jika diperlukan) ...
         return null;
     }
+
+    @Override
+    public void update(Produk p) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
 }

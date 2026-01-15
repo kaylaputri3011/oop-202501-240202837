@@ -4,18 +4,9 @@ import main.java.com.upb.agripos.model.Produk;
 import java.util.List;
 
 public interface ProductRepository {
-    // 1. Simpan Produk Baru
     void save(Produk p) throws Exception;
-
-    // 2. Cari Produk (berdasarkan kode)
+    void delete(String code) throws Exception; 
     Produk findByCode(String code) throws Exception;
-
-    // 3. Tampilkan Semua Produk
     List<Produk> findAll() throws Exception;
-
-    // 4. Update Produk (Edit stok/harga/nama)
     void update(Produk p) throws Exception;
-
-    // 5. Hapus Produk (PENTING: Jangan sampai tertinggal)
-    void delete(String code) throws Exception;
 }
