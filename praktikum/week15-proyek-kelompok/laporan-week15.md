@@ -39,8 +39,11 @@ Aplikasi menggunakan arsitektur **MVC** yang dipisahkan dengan layer **DAO** unt
 3.  **Sequence Diagram (SD-Checkout):**
     * *Alur:* View (Bayar) $\rightarrow$ Controller $\rightarrow$ Service (Hitung) $\rightarrow$ DAO (Simpan Transaksi & Update Stok) $\rightarrow$ Database.
 ![alt text](sequens.png)
+
 4. **Activity Diagram:**
+
 ![alt text](activity.png)
+
 ---
 
 ## 4. Desain Database (ERD)
