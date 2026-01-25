@@ -176,7 +176,6 @@ public class MainView {
     public Button getBtnAddToCart() { return btnAddToCart; }
     public Button getBtnHapusCart() { return btnHapusCart; }
     public Button getBtnCheckout() { return btnCheckout; }
-  
     public Label getLblTotal() { return lblTotal; }
     public TextField getTxtMemberId() { return txtMemberId; }
     public Button getBtnCekMember() { return btnCekMember; }
